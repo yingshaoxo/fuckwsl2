@@ -93,11 +93,11 @@ func make_the_port_forward() {
 	fmt.Printf("the exists_ports: %v\n", exists_ports)
 	for _, port := range ports {
 		port = strings.TrimPrefix(port, ":")
-		if !contains(exists_ports, port) {
-			fmt.Printf("proxyed port: %v\n", port)
-			if err := exec.Command("netsh", "interface", "portproxy", "add", "v4tov4", fmt.Sprintf("listenport=%s", port), fmt.Sprintf("connectaddress=%s", wslIP), fmt.Sprintf("connectport=%s", port), "listenaddress=*", "protocol=tcp").Run(); err != nil {
-				panic(err)
-			}
+		//if !contains(exists_ports, port) {
+		//}
+		fmt.Printf("proxyed port: %v\n", port)
+		if err := exec.Command("netsh", "interface", "portproxy", "add", "v4tov4", fmt.Sprintf("listenport=%s", port), fmt.Sprintf("connectaddress=%s", wslIP), fmt.Sprintf("connectport=%s", port), "listenaddress=*", "protocol=tcp").Run(); err != nil {
+			panic(err)
 		}
 	}
 }
