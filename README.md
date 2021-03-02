@@ -4,7 +4,7 @@ One launch solution of wsl2 port proxy.
 > One launch solution for wsl2 port forward to host. (No need to switch to bridge mode now)
 
 ## How to use it
-Download this: [fuckwsl2.exe](https://github.com/yingshaoxo/fuckwsl2/releases/download/v0.1/fuckwsl2.exe)
+Download this: [fuckwsl2.exe](https://github.com/yingshaoxo/fuckwsl2/releases/download/0.1/fuckwsl2.exe)
 
 Run it as admin.
 
