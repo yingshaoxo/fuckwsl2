@@ -17,4 +17,4 @@ you should probably turn off your firewall to use this software
 ## Other ideas
 * I want the `systemctl` back
 
-> feel free to pull a request to get involved to fight with wsl2
+> feel free to pull a request to get involved to make love with wsl2
