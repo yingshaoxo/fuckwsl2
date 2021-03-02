@@ -16,7 +16,6 @@ func am_i_the_admin() bool {
 		fmt.Println("admin no")
 		return false
 	}
-	fmt.Println("admin yes")
 	return true
 }
 
@@ -106,6 +105,7 @@ func make_the_port_forward() {
 func main() {
 	if am_i_the_admin() == false {
 		fmt.Printf("Run me as admin!")
+		time.Sleep(5 * time.Second)
 		os.Exit(0)
 	}
 
