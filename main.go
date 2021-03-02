@@ -62,7 +62,6 @@ func get_exists_port() []string {
 	}
 	//fmt.Printf("%v", string(res))
 	var reg = regexp.MustCompile("(\\d{1,5})\\s*\n")
-	// 去重
 	matchs := reg.FindAllStringSubmatch(string(res)+"\n", -1)
 	var list = make([]string, 0)
 	for _, l := range matchs {
@@ -73,7 +72,7 @@ func get_exists_port() []string {
 }
 
 func make_the_port_forward() {
-	// 获取WSL2 IP地址
+	// get WSL2 IP address
 	result, err := exec.Command("wsl", "ifconfig", "eth0").Output()
 	if err != nil {
 		panic(err)
@@ -88,7 +87,6 @@ func make_the_port_forward() {
 		panic(err)
 	}
 	var reg = regexp.MustCompile(":(\\d{1,5})")
-	// 去重
 	ports := removeDuplicates(reg.FindAllString(string(res), -1))
 
 	// netsh interface portproxy add v4tov4 listenport=80 connectaddress=172.17.83.208 connectport=80 listenaddress=* protocol=tcp
@@ -113,6 +111,6 @@ func main() {
 
 	for true {
 		make_the_port_forward()
-		time.Sleep(30 * time.Second)
+		time.Sleep(10 * time.Second)
 	}
 }
