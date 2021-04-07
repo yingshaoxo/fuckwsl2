@@ -99,9 +99,6 @@ func make_the_port_forward() {
 		if err := exec.Command("netsh", "interface", "portproxy", "add", "v4tov4", fmt.Sprintf("listenport=%s", port), fmt.Sprintf("connectaddress=%s", wslIP), fmt.Sprintf("connectport=%s", port), "listenaddress=*", "protocol=tcp").Run(); err != nil {
 			panic(err)
 		}
-		if err := exec.Command("netsh", "interface", "portproxy", "add", "v4tov4", fmt.Sprintf("listenport=%s", port), fmt.Sprintf("connectaddress=%s", wslIP), fmt.Sprintf("connectport=%s", port), "listenaddress=*", "protocol=udp").Run(); err != nil {
-			panic(err)
-		}
 	}
 }
 
