@@ -9,7 +9,7 @@ Download this: [fuckwsl2.exe](https://github.com/yingshaoxo/fuckwsl2/releases/do
 Run it as admin.
 
 ## How to cancel the forwarding
-reboot your system
+`ctrl+c` or `reboot your system`
 
 ## Why it's not working?
 you should probably turn off your firewall to use this software

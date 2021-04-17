@@ -5,8 +5,10 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"os/signal"
 	"regexp"
 	"strings"
+	"syscall"
 	"time"
 )
 
@@ -102,12 +104,33 @@ func make_the_port_forward() {
 	}
 }
 
+func reset_to_default() error {
+	err := exec.Command("netsh", "interface", "portproxy", "reset").Run()
+	return err
+}
+
+func SetupCloseHandler() {
+	c := make(chan os.Signal)
+	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
+	go func() {
+		<-c
+		fmt.Println("\r- Ctrl+C pressed in Terminal")
+		reset_to_default()
+		fmt.Println("\r- Cancel all port forwarding actions")
+		fmt.Println("\r- Bye~")
+		time.Sleep(3 * time.Second)
+		os.Exit(0)
+	}()
+}
+
 func main() {
 	if am_i_the_admin() == false {
 		fmt.Printf("Run me as admin!")
 		time.Sleep(5 * time.Second)
 		os.Exit(0)
 	}
+
+	SetupCloseHandler()
 
 	for true {
 		make_the_port_forward()
